@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>近江映像研究会</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: "MS Pゴシック", "MS PGothic", sans-serif;
+      background-color: #E8D0AA; /* 薄い茶色の背景 */
+      color: #000000;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+    
+    .header {
+      background-color: #B86F50; /* 茶色のヘッダー */
+      padding: 15px 0;
+      text-align: center;
+      border-bottom: 4px solid #000000;
+    }
+    
+    .header h1 {
+      font-size: 42px;
+      color: #F5E8C7;
+      text-shadow: 2px 2px 0px #000000;
+      letter-spacing: 2px;
+      margin: 10px 0;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #F5E8C7; /* 薄いベージュ背景 */
+      border: 4px solid #000000;
+      border-radius: 0px;
+      box-shadow: 8px 8px 0px #B86F50;
+    }
+    
+    .section {
+      margin-bottom: 30px;
+      border-bottom: 2px dotted #000000;
+      padding-bottom: 20px;
+    }
+    
+    .section:last-child {
+      border-bottom: none;
+    }
+    
+    h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      color: #000000;
+      border-left: 8px solid #EB9B6B; /* オレンジ色のアクセント */
+      padding-left: 10px;
+    }
+    
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+    
+    .admin-section {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+      background-color: #B86F50;
+      border: 3px solid #000000;
+      padding: 20px;
+      box-shadow: 5px 5px 0px #000000;
+    }
+    
+    .admin-image {
+      width: 200px;
+      height: 200px;
+      background-color: #EB9B6B;
+      border: 3px solid #000000;
+      flex-shrink: 0;
+      margin-right: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    
+    .admin-info {
+      flex-grow: 1;
+    }
+    
+    .admin-name {
+      font-weight: bold;
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: #F5E8C7;
+      text-shadow: 1px 1px 0px #000000;
+    }
+    
+    .admin-desc {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #F5E8C7;
+    }
+    
+    .activity-section {
+      margin-bottom: 30px;
+    }
+    
+    .activity-item {
+      background-color: #B86F50;
+      border: 2px solid #000000;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+    
+    .activity-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #F5E8C7;
+      text-shadow: 1px 1px 0px #000000;
+    }
+    
+    .activity-desc {
+      color: #F5E8C7;
+    }
+    
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .gallery-item {
+      background-color: #EB9B6B;
+      border: 3px solid #000000;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000000;
+      font-weight: bold;
+    }
+    
+    .marquee {
+      background-color: #EB9B6B;
+      padding: 8px 0;
+      border-top: 2px solid #000000;
+      border-bottom: 2px solid #000000;
+      margin: 25px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    
+    .marquee-content {
+      display: inline-block;
+      animation: marquee 20s linear infinite;
+      color: #000000;
+      font-weight: bold;
+    }
+    
+    @keyframes marquee {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    
+    .pixel-button {
+      display: inline-block;
+      background-color: #EB9B6B;
+      border: 4px solid #000000;
+      padding: 10px 25px;
+      font-size: 18px;
+      cursor: pointer;
+      color: #000000;
+      font-weight: bold;
+      text-decoration: none;
+      text-align: center;
+      margin: 20px auto;
+      display: block;
+      width: 200px;
+      box-shadow: 4px 4px 0px #000000;
+      transition: all 0.1s;
+    }
+    
+    .pixel-button:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px #000000;
+    }
+    
+    .pixel-button:active {
+      transform: translate(4px, 4px);
+      box-shadow: none;
+    }
+    
+    .counter {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #000000;
+      background-color: #B86F50;
+      padding: 8px;
+      border: 2px solid #000000;
+      display: inline-block;
+      margin: 0 auto;
+    }
+    
+    .counter-container {
+      text-align: center;
+      margin-top: 30px;
+    }
+    
+    .counter img {
+      vertical-align: middle;
+      border: 1px solid #000000;
+      background-color: #FFF9CC;
+    }
+    
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 12px;
+      color: #000000;
+      padding: 15px 0;
+      border-top: 2px dotted #000000;
+    }
+    
+    @media (max-width: 768px) {
+      .admin-section {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .admin-image {
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+      
+      .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>近江映像研究会</h1>
+    <a href="https://example.com/join" class="pixel-button" style="margin-top: 5px; margin-bottom: 15px;">参加する</a>
+  </div>
+
+  <div class="container">
+    <div class="section">
+      <h2>研究会について</h2>
+      <p>映像、音楽、表現、音MAD（おもに柴又）などの作品作りや、おしゃべりをメインに活動しています。近江と言っていますが、参加者は近江出身ではない人のほうが多いです。つまり、だれでも参加できます。</p>
+      <p>当研究会は哀愁的な雰囲気を大切にしながら、レトロな表現方法や懐かしさを感じる作品制作を行っています。初心者から経験者まで、様々な方が集まり、それぞれの視点で創作活動を楽しんでいます。</p>
+    </div>
+    
+    <div class="marquee">
+      <div class="marquee-content">
+        ★☆★ 新メンバー募集中！初心者も大歓迎です ★☆★　　　★☆★ 滋賀県民はもちろん、西日本・東日本のメンバーも大歓迎！ ★☆★
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>管理者紹介</h2>
+      <div class="admin-section">
+        <div class="c:\Users\user\Downloads\anntena.jpg">管理者画像</div>
+        <div class="admin-info">
+          <div class="admin-name">アンテナ470Hz</div>
+          <div class="admin-desc">近江映像研究会を作った人。映像作歴四年、柴又MAD、音楽作品多数。<br>
+          レトロゲームとピクセルアート、音MADに造詣が深く、哀愁的な作風が得意です。<br>
+          尊敬する人はセルゲイ・エイゼンシュテインさん、榎 昭裕さん、2号さんです。</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>活動内容</h2>
+      <div class="activity-section">
+        <div class="activity-item">
+          <div class="activity-title">雑談</div>
+          <div class="activity-desc">毎日、作品の発表や制作相談をしています。</div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-title">作品の告知・進捗報告</div>
+          <div class="activity-desc">進捗を報告し合い、モチベーションを高めています。映像の宣伝もできます。</div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-title">年間作品展示会（予定）</div>
+          <div class="activity-desc">年に一度、メンバー全員の作品を展示するオンラインギャラリーを開催しています。</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>作品ギャラリー</h2>
+      <p>メンバーの代表的な作品をご紹介します。クリックすると詳細をご覧いただけます。（建設中！）</p>
+      <div class="gallery">
+        <div class="gallery-item">作品画像1</div>
+        <div class="gallery-item">作品画像2</div>
+        <div class="gallery-item">作品画像3</div>
+        <div class="gallery-item">作品画像4</div>
+        <div class="gallery-item">作品画像5</div>
+        <div class="gallery-item">作品画像6</div>
+      </div>
+    </div>
+    
+    <a href="https://example.com/join" class="pixel-button">参加する</a>
+    
+    <div class="counter-container">
+      <div class="counter">
+        あなたは<img src="/api/placeholder/90/25" alt="アクセスカウンター">人目の訪問者です
+      </div>
+    </div>
+    
+    <footer>
+      Copyright © 2025 近江映像研究会 All Rights Reserved.<br>
+      最終更新日: 2025年5月5日　Byアンテナ470Hz
+    </footer>
+  </div>
+</body>
+</html>
